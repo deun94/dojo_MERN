@@ -35,13 +35,26 @@
                 "body",getValueFromId("color-input")
             );
         }
-        function getValueFromId(id){
+        /*function getValueFromId(id){
+            return document.getElementById(id).value;
+        }*/
+        const getValueFromId = (id) => {
             return document.getElementById(id).value;
         }
+        /*
         function setBackgroundColorById(id, color){
             document.getElementById(id).style = "background-color: " + color;
         }
+        */
+        const setBackgroundColorById = (id, color)=>{
+            document.getElementById(id).style = "background-color: " + color;
+        }
+        /*
         function mouseOverFunction(el){
+            el.style = "background-color: black";
+        }
+        */
+        const moustOverFunction =(el) =>{
             el.style = "background-color: black";
         }
         /*var newColor = document.getValueFromId("color-input");

@@ -78,6 +78,3 @@ secondKey , extracting the array from lastTest
 skilling 1, going to 5
 
 result should be value, [1,5,1,8,3,3], 1, 5*/
-
-
-
