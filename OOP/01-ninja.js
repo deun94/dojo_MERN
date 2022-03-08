@@ -30,7 +30,7 @@ ninja1.drinkSake();
 // ==============================SENSEI CLASS ==================> inhertence and super
 class Sensei extends Ninja{
     constructor(name){
-        super(name, 200);
+        super(name, 200);//super means run the constuctor of the parent method
         this.strength = 10;
         this.speed = 10;
         this.wisdom = 10;
