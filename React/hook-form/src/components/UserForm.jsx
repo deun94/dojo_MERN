@@ -10,12 +10,23 @@ const UserForm = (props) => {
     //========================conditional rendering assignment==================
     const[hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
     //=========================================================================
+    const [forminfo, setforminfo] = useState({
+        firstName: "",
+        lastName: '',
+        email: ''
+    })
 
+    const changeHandler = (e)=>{
+        setforminfo({
+            ...forminfo,
+            [e.target.name]: e.target.value
+        })
+    }
 
     //================================validations============================
-    const[nameError, setNameError] = useState("");
-    const[emailError, setEmailError] = useState("");
-    const[passwordError, setPasswordError] = useState("");
+    // const[nameError, setNameError] = useState("");
+    // const[emailError, setEmailError] = useState("");
+    // const[passwordError, setPasswordError] = useState("");
 
 
     //validations functions ==============================================
@@ -36,14 +47,14 @@ const UserForm = (props) => {
         // =======================================================================
 
 
-        //==============================================for clearing the form
+        //==============================================for clearing the result
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
         setPassconf("");
     };
-    
+    //numbers can be null
     return(
         <>
         <div className="container">
@@ -58,7 +69,7 @@ const UserForm = (props) => {
             <form onSubmit={ createUser }>
                 <div  className="formInput">
                     <label>First Name: </label> 
-                    <input type="text" onChange={ (e) => setFirstName(e.target.value) } />
+                    <input type="text" onChange={ changeHandler } value = {firstName} name="firstName"/>
                     {/* ==================error messages ==================== */}
                     {
                         firstName.length < 2 && firstName.length >0?
@@ -67,7 +78,7 @@ const UserForm = (props) => {
                 </div>
                 <div  className="formInput">
                     <label>Last Name: </label> 
-                    <input type="text"  onChange={ (e) => setLastName(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setLastName(e.target.value) } value = {lastName} />
                     {
                         lastName.length < 2 && lastName.length >0?
                         <p className="text-danger">Last Name must be at least 2 characters!</p>: ""
@@ -75,7 +86,7 @@ const UserForm = (props) => {
                 </div>
                 <div  className="formInput">
                     <label>Email Address: </label> 
-                    <input type="text"  onChange={ (e) => setEmail(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setEmail(e.target.value) } value = {email}/>
                     {
                         email.length < 5 && email.length >0?
                         <p className="text-danger">Email must be at least 5 characters!</p>: ""
@@ -83,7 +94,7 @@ const UserForm = (props) => {
                 </div>
                 <div  className="formInput">
                     <label>Password: </label>
-                    <input type="text"  onChange={ (e) => setPassword(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setPassword(e.target.value) } value = {password}/>
                     {
                         password.length <8  && password.length >0?
                         <p className="text-danger">Passwords must be at least 8 characters!</p>: ""
@@ -91,9 +102,9 @@ const UserForm = (props) => {
                 </div>
                 <div  className="formInput">
                     <label>Confirm Password: </label>
-                    <input type="text"  onChange={ (e) => setPassconf(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setPassconf(e.target.value) } value = {passconf}/>
                     {
-                        passconf.length >0 && (password != passconf || passconf < 8)?
+                        passconf.length >0 && (password !== passconf || passconf < 8)?
                         <p className="text-danger">Passwords must match!</p>: ""
                     }
                 </div>

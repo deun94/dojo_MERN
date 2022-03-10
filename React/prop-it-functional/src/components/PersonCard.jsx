@@ -1,5 +1,6 @@
 import React from "react";
-const PersonCard = props => {
+const PersonCard = (props) => {
+    //you can name it anything, but props is the industry standard
     return (
         <>
         <div>
