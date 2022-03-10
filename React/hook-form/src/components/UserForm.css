@@ -1,0 +1,30 @@
+.container{
+    width: 350px;
+    margin: 0 auto;
+}
+.formInput{
+    border: 3px black;
+    background-color: #dddddd;
+    margin-bottom: 2px;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-radius: 5px;
+    height: 40px;
+    align-content: center;
+}
+input[type=text]{
+    border-radius: 4px;
+}
+.resultBox{
+    display: flex;
+    justify-content: space-around;
+}
+.result{
+    text-align: left;
+}
+.btn{
+    border-radius: 4px;
+    background-color: aquamarine;
+    color: whitesmoke;
+}
