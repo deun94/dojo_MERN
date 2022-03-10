@@ -7,12 +7,36 @@ const UserForm = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passconf, setPassconf] = useState("");
-    
+    //========================conditional rendering assignment==================
+    const[hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
+    //=========================================================================
+
+
+    //================================validations============================
+    const[nameError, setNameError] = useState("");
+    const[emailError, setEmailError] = useState("");
+    const[passwordError, setPasswordError] = useState("");
+
+
+    //validations functions ==============================================
+    // const handleName = (e) => {
+    //     setName(e.target.value);
+    //     if(e.target.value.length < 1) {
+    //         setNameError("Name is required!");
+    //     } else if(e.target.value.length < 3) {
+    //         setNameError("Name must be 3 characters or longer!");
+    //     }
+    // }
     const createUser = (e) => {
         e.preventDefault();
         const newUser = { firstName, lastName, email, password, passconf };
         console.log("Welcome", newUser);
-        //for clearing the form
+        //=============================submission condition turned to true===========
+        setHasBeenSubmitted(true);
+        // =======================================================================
+
+
+        //==============================================for clearing the form
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -23,26 +47,55 @@ const UserForm = (props) => {
     return(
         <>
         <div className="container">
+            {/* ===========for conditional rendering and changing message */}
+            {
+                hasBeenSubmitted ?
+                <h3>Thank you for submitting the form!</h3>:
+                <h3>Welcome, please submit your information</h3>
+
+            }
+            {/* ======================================================= */}
             <form onSubmit={ createUser }>
-                <div className="formInput">
+                <div  className="formInput">
                     <label>First Name: </label> 
                     <input type="text" onChange={ (e) => setFirstName(e.target.value) } />
+                    {/* ==================error messages ==================== */}
+                    {
+                        firstName.length < 2 && firstName.length >0?
+                        <p className="text-danger">First Name must be at least 2 characters!</p>: ""
+                    }
                 </div>
-                <div className="formInput">
+                <div  className="formInput">
                     <label>Last Name: </label> 
-                    <input type="text" onChange={ (e) => setLastName(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setLastName(e.target.value) } />
+                    {
+                        lastName.length < 2 && lastName.length >0?
+                        <p className="text-danger">Last Name must be at least 2 characters!</p>: ""
+                    }
                 </div>
-                <div className="formInput">
+                <div  className="formInput">
                     <label>Email Address: </label> 
-                    <input type="text" onChange={ (e) => setEmail(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setEmail(e.target.value) } />
+                    {
+                        email.length < 5 && email.length >0?
+                        <p className="text-danger">Email must be at least 5 characters!</p>: ""
+                    }
                 </div>
-                <div className="formInput">
+                <div  className="formInput">
                     <label>Password: </label>
-                    <input type="text" onChange={ (e) => setPassword(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setPassword(e.target.value) } />
+                    {
+                        password.length <8  && password.length >0?
+                        <p className="text-danger">Passwords must be at least 8 characters!</p>: ""
+                    }
                 </div>
-                <div className="formInput">
+                <div  className="formInput">
                     <label>Confirm Password: </label>
-                    <input type="text" onChange={ (e) => setPassconf(e.target.value) } />
+                    <input type="text"  onChange={ (e) => setPassconf(e.target.value) } />
+                    {
+                        passconf.length >0 && (password != passconf || passconf < 8)?
+                        <p className="text-danger">Passwords must match!</p>: ""
+                    }
                 </div>
                 <input className="btn" type="submit" value="Create User" />
             </form>

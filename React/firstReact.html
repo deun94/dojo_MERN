@@ -12,9 +12,11 @@
         <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
         <script>
             const App = React.createElement("h1", {}, "Our First React page has rendered");
-            ReactDOM.render(App, document.getElementById("root"));
+            setTimeout(() =>{
+                ReactDOM.render(App, document.getElementById("root"));
+            },3000); 
         </script>
-        
+        <!-- reactDom.render lets us swap in that dynamicaly generated h1 into the page where id = root -->
         
     </body>
 </html>
