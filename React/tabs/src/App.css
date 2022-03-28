@@ -1,9 +1,5 @@
 .App {
   text-align: center;
-  background-color: #f2f2fd;
-  opacity: 0.8;
-  background: linear-gradient(135deg, #f5d7d755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #f5d7d7 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #f5d7d755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #f5d7d7 25%, #f2f2fd 25%) 0px 0/ 20px 20px;
-  height: 100vh;
 }
 
 .App-logo {

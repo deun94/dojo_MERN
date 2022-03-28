@@ -62,14 +62,14 @@ const UserForm = (props) => {
             {
                 hasBeenSubmitted ?
                 <h3>Thank you for submitting the form!</h3>:
-                <h3>Welcome, please submit your information</h3>
+                <h3 className ="vivify slideInLeft">Welcome, please submit your information</h3>
 
             }
             {/* ======================================================= */}
             <form onSubmit={ createUser }>
                 <div  className="formInput">
                     <label>First Name: </label> 
-                    <input type="text" onChange={ changeHandler } value = {firstName} name="firstName"/>
+                    <input type="text" onChange={ (e) => setFirstName(e.target.value) } value = {firstName} name="firstName"/>
                     {/* ==================error messages ==================== */}
                     {
                         firstName.length < 2 && firstName.length >0?

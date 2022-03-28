@@ -90,7 +90,7 @@ const UserFormReducer= (props) => {
                 
                 <div  className="formInput">
                     <label>First Name: </label> 
-                    <input type="text" classNAme="form-control" onChange={ changeHandler } value = {forminfo.firstName} name="firstName"/>
+                    <input type="text" className="form-control" onChange={ changeHandler } value = {forminfo.firstName} name="firstName"/>
                     {/* ==================error messages ==================== */}
                     {
                         forminfo.firstName.length < 2 && forminfo.firstName.length >0?
