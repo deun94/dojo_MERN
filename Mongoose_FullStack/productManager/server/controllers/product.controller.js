@@ -21,7 +21,7 @@ module.exports.findOneProduct = (req, res) => {
 
 module.exports.createNewProduct = (req, res) => {
     Product.create(req.body)
-        .then(newProduct => res.json({ result: newProduct }))
+        .then(newProduct => res.json({ results: newProduct }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
@@ -31,12 +31,12 @@ module.exports.updateProduct = (req, res) => {
         req.body,
         { new: true, runValidators: true }
     )
-        .then(updatedProduct => res.json({ result: updatedProduct }))
+        .then(updatedProduct => res.json({ results: updatedProduct }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }
 
 module.exports.deleteProduct = (req, res) => {
     Product.deleteOne({ _id: req.params.id })
-        .then(result => res.json({ result: result }))
+        .then(result => res.json({ results: result }))
         .catch(err => res.json({ message: 'Something went wrong', error: err }));
 }

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
-// import {useHistory} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const ProductForm= (props) => {
 
@@ -11,7 +11,7 @@ const ProductForm= (props) => {
     const [formErrors, setFormErrors] = useState({});
     //empty objects for the errors since all errors are different
 
-    // const history = useHistory();
+    const history = useHistory();
     //don't need this  since we are already doing it in the prevent Default 
 
     const createProduct = (e) =>{
@@ -34,7 +34,7 @@ const ProductForm= (props) => {
                 setPrice("");
                 setDescription("");
                 setFormErrors({});
-                // history.push("/")
+                history.push("/")
             }
         })
         .catch(err=>{

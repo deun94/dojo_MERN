@@ -12,6 +12,7 @@ import {
 import ProductForm from './components/ProductForm';
 import AllProducts from './components/AllProducts';
 import OneProductDetail from "./components/OneProductDetail";
+import EditProductForm from './components/EditProductForm';
 
 function App() {
 
@@ -28,12 +29,15 @@ function App() {
             <p> Hello</p>
           </Route> */}
           <Route exact path="/">
-            <h3>Hello</h3>
+            <h3>Hello for products</h3>
             <ProductForm formSubmitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></ProductForm>
             <AllProducts></AllProducts>
           </Route>
           <Route exact path= "/products/:_id">
             <OneProductDetail></OneProductDetail>
+          </Route>
+          <Route exact path= "/products/edit/:_id">
+            <EditProductForm></EditProductForm>
           </Route>
         </Switch>
         
