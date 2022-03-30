@@ -22,15 +22,18 @@ app.use( express.urlencoded({ extended: true }) );
 //=============================classes
 class User {
     constructor() {
-        this._id = faker.commerce.user_id();
-        this.firstName = faker.commerce.firstName();
-        this.lastName = faker.commerce.lastName();
-        this.phoneNumber = faker.commerce.phoneNumber();
-        this.email = faker.commerce.email();
-        this.password = faker.commerce.password();
+        this._id = faker.random.number();
+        this.firstName = faker.name.firstName();
+        this.lastName = faker.name.lastName();
+        this.phoneNumber = faker.phone.phoneNumber();
+        this.email = faker.internet.email();
+        this.password = faker.internet.password();
         // this.helper = faker.helpers.userCard();
     }
 }
+//==================creating instance of a user
+const newUser = new User();
+console.log(newUser);
 //==========================need class address since it has child elements
 
 class Address {
@@ -42,11 +45,6 @@ class Address {
         this.country = faker.address.country();
     }
 }
-//==================creating instance of a user
-const newUser = new User();
-console.log(newUser);
-
-
 //=====================initiate new instance of address
 const newAddress = new Address();
 
@@ -54,8 +52,8 @@ const newAddress = new Address();
 //=========================class of compnay ==============
 class Company {
     constructor() {
-        this._id = faker.commerce.id();
-        this.name = faker.commerce.name();
+        this._id = faker.random.number();
+        this.companyName = faker.company.companyName();
         //utilize address class
         this.address = newAddress;
     }
@@ -70,25 +68,43 @@ console.log(newCompany);
 // });
 
 
-app.get("/api/:users/:new", (req, res) => {
-    if(req.params.users === "users"){
-        res.send(`User First Name: ${newUser.firstName}; User Last Name: ${newUser.lastName}`);
-    }
-    if(req.params.users === "companies"){
-        res.send(`Company name: ${newComp.name}`);
-    }
-    if(req.params.users === "user" && req.params.new === "company"){
-        res.send(`User First Name: ${newUser.firstName}; Company name: ${newComp.name}`);
-    }
-    // req.body = newUser;
-    // console.log(req.body);
-    // return res.status(201).json({newUser: newUser});
+// app.get("/api/:users/:new", (req, res) => {
+//     if(req.params.users === "users"){
+//         res.send(`User First Name: ${newUser.firstName}; User Last Name: ${newUser.lastName}`);
+//     }
+//     if(req.params.users === "companies"){
+//         res.send(`Company name: ${newCompany.companyName}`);
+//     }
+//     if(req.params.users === "user" && req.params.new === "company"){
+//         res.send(`User First Name: ${newUser.firstName}; Company name: ${newCompany.companyName}`);
+//     }
+//     // req.body = newUser;
+//     // console.log(req.body);
+//     // return res.status(201).json({newUser: newUser});
     
-    });
-const server = app.listen(8000, () =>
-    console.log(`Server is locked and loaded on port ${server.address().port}!`)
-);
+//     });
+// // const server = app.listen(8000, () =>
+// //     console.log(`Server is locked and loaded on port ${server.address().port}!`)
+// );
 
-
+app.get("/api/users/new", (req, res) => {
+    let user = new User();
+    res.json({ results: user });
+  });
+  
+  app.get("/api/companies/new", (req, res) => {
+    let company = new Company();
+    res.json({ results: company });
+  });
+  
+  app.get("/api/user/company", (req, res) => {
+    let user = new User();
+    let company = new Company();
+    res.json({
+      user: user,
+      company: company,
+     });
+  });
+  
 //============================bottom of the file
 app.listen( port, () => console.log(`Listening on port : ${port}`));
