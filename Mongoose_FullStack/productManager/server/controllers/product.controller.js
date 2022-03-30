@@ -1,10 +1,11 @@
 // const { application } = require("express");
 const Product = require("../models/product.model");
-
+console.log("Product looks like", Product);
 
 // module.exports.hellWorld = (req, res) => {
 //     res.json({msg:"helloworld"})
 // }
+
 
 module.exports.findAllProducts = (req, res) => {
     Product.find()

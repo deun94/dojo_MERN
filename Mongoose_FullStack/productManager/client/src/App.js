@@ -22,10 +22,11 @@ function App() {
       <div className="App container">
         <h1>Product Manager</h1>
         <Switch>
-          <Route exact path = "/">
+          {/* <Route exact path = "/">
             <p> Hello</p>
-          </Route>
-          <Route exact path="/new">
+          </Route> */}
+          <Route exact path="/">
+            <h3>Hello</h3>
             <ProductForm formSubmnitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></ProductForm>
           </Route>
         </Switch>

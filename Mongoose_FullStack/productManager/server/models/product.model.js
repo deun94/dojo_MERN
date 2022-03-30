@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const ProductSchema = new mongoose.Schema(
     {
     title: { type: String },
@@ -7,5 +8,10 @@ const ProductSchema = new mongoose.Schema(
 }, 
 { timestamps: true }
 );
-module.exports.Product = mongoose.model('Product', ProductSchema);
+const Product =  mongoose.model('Product', ProductSchema);
+
+
+//export it so files can communicate with this file
+module.exports = Product;
+
 

@@ -6,6 +6,7 @@ const port = 8000;
 
 const cors = require("cors")
 
+
 //post request
 app.use( express.json());
 app.use(express.urlencoded({extended: true}));
