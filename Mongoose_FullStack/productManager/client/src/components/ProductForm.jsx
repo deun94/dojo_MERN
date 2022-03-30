@@ -20,7 +20,7 @@ const ProductForm= (props) => {
         //for grouping the form info into one
         const formInfo = {title, price, description};
 
-        axios.post("http://localhost:8000/api/products/new", formInfo)
+        axios.post("http://localhost:8000/api/products", formInfo)
         .then(res=>{
             console.log("response of the form", res);
             if(res.data.error){ //for posting erros

@@ -31,7 +31,9 @@ function App() {
           <Route exact path="/">
             <h3>Hello for products</h3>
             <ProductForm formSubmitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></ProductForm>
-            <AllProducts></AllProducts>
+            {/* you need the form submitted to update the allproducts cuz you need to connect the form submitted to the results too */}
+            
+            <AllProducts formSubmitted = {formSubmitted}></AllProducts>
           </Route>
           <Route exact path= "/products/:_id">
             <OneProductDetail></OneProductDetail>
