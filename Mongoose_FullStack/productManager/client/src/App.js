@@ -10,6 +10,8 @@ import {
 
 
 import ProductForm from './components/ProductForm';
+import AllProducts from './components/AllProducts';
+import OneProductDetail from "./components/OneProductDetail";
 
 function App() {
 
@@ -27,7 +29,11 @@ function App() {
           </Route> */}
           <Route exact path="/">
             <h3>Hello</h3>
-            <ProductForm formSubmnitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></ProductForm>
+            <ProductForm formSubmitted = {formSubmitted} setFormSubmitted = {setFormSubmitted}></ProductForm>
+            <AllProducts></AllProducts>
+          </Route>
+          <Route exact path= "/products/:_id">
+            <OneProductDetail></OneProductDetail>
           </Route>
         </Switch>
         
